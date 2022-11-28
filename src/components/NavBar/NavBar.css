@@ -1,3 +1,8 @@
-nav {
-    background-color: royalblue;
+.NavBar {
+    background-color: white;   
+    color: #3A3A3C !important;
+
+}
+.navbar-brand {
+    color: #3A3A3C !important;
 }

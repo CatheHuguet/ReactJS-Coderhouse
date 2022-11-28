@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
-
+import { BsFillCartFill } from "react-icons/bs";
 import './CartWidget.css'
-import decorIcon from '../../assets/decorIcon.png'
 
 const CartWidget = () => {
   const [ count, setCount] = useState(0) // me devuelve dos posiciones, hook de count
@@ -26,18 +25,10 @@ const CartWidget = () => {
 
   return (
     <div>
-      <img
-        src={decorIcon}
-        width="30"
-        height="30"
-        className="d-inline-block align-top"
-        alt="decorIcon"
-      />
-      <button onClick={handleCount} type="button" className="btn btn-primary position-relative">Cart
-      <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      <BsFillCartFill className='CartIcon' onClick={handleCount} size={25}/>
+      <span className="top-0 start-100 translate-middle badge rounded-pill">
         {count}
       </span>
-    </button>
     </div>
   )
 }
