@@ -13,15 +13,15 @@ const NavBar = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-          <Nav.Link href="#furniture">Muebles</Nav.Link>
-          <Nav.Link href="#lapms">Lámparas</Nav.Link>
-          <Nav.Link href="#mirrors">Espejos</Nav.Link>
-          <Nav.Link href="#pillows">Almohadones</Nav.Link>
-          <Nav.Link href="#curtains">Cortinas</Nav.Link>
-          <Nav.Link href="#new">NUEVO!</Nav.Link>
+          <Nav.Link href="#muebles">Muebles</Nav.Link>
+          <Nav.Link href="#lamparas">Lámparas</Nav.Link>
+          <Nav.Link href="#espejos">Espejos</Nav.Link>
+          <Nav.Link href="#almohadones">Almohadones</Nav.Link>
+          <Nav.Link href="#cortinas">Cortinas</Nav.Link>
+          <Nav.Link href="#nuevo">NUEVO!</Nav.Link>
         </Nav>
         <Nav> 
-          <Nav.Link eventKey={2} href="#cartwidget">
+          <Nav.Link eventKey={2} href="#carrito">
           <CartWidget/>
           </Nav.Link>
         </Nav>
