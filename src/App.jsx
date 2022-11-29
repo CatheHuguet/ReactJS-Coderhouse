@@ -2,7 +2,7 @@
 //1° librerias de react
 import { useState } from 'react'
 //2° componentes de la app
-import ItemListContainer from './components/Container/ItemListContainer'
+import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import NavBar from './components/NavBar/NavBar'
 //3° estilos 
 import 'bootstrap/dist/css/bootstrap.min.css'
