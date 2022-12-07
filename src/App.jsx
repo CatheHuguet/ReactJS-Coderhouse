@@ -2,8 +2,9 @@
 //1° librerias de react
 import { useState } from 'react'
 //2° componentes de la app
-import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import NavBar from './components/NavBar/NavBar'
+import ItemListContainer from './components/ItemListContainer/ItemListContainer'
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
 //3° estilos 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
@@ -18,6 +19,7 @@ function App() {
       <ItemListContainer
         greeting={greeting} 
       />
+    <ItemDetailContainer/>
     </div>
   ) 
 }
