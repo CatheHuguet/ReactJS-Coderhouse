@@ -1,29 +1,49 @@
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { Container, Nav, Navbar } from 'react-bootstrap'
 import CartWidget from '../CartWidget/CartWidget'
+import {Link, NavLink} from 'react-router-dom'
 import decorIcon from '../../assets/decorIcon.png'
 import './NavBar.css'
+
 
 const NavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" className="NavBar d-flex flex-row mb-3">
-      <Navbar.Brand href="#home" className="navbar-brand">
-        <img src={decorIcon} width="30" height="30" className="d-inline-block align-top navv"/>
+      {/* Link para brand y cart porque no quiero ver cuando estan activados */}
+      <Link to='/' className="navbar-brand"> 
+        <img src={decorIcon} width="30" height="30" className="d-inline-block align-top nav"/>
         DECO.ration
-      </Navbar.Brand>
+      </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-          <Nav.Link href="#muebles">Muebles</Nav.Link>
-          <Nav.Link href="#lamparas">Lámparas</Nav.Link>
-          <Nav.Link href="#espejos">Espejos</Nav.Link>
-          <Nav.Link href="#almohadones">Almohadones</Nav.Link>
-          <Nav.Link href="#cortinas">Cortinas</Nav.Link>
-          <Nav.Link href="#nuevo">NUEVO!</Nav.Link>
+
+          {/* NavLink para las opciones del nav porque quiero ver cuando estan activadas */}     
+          {/* convertir todo esto a un MAP   */}
+          <NavLink to='/cat/furniture' className={({isActive}) => isActive? 'btn btn-success': 
+            'btn btn-outline-success' }> Muebles 
+          </NavLink>
+          <NavLink to='/cat/lamp' className={({isActive}) => isActive? 'btn btn-success': 
+            'btn btn-outline-success' }> Lámparas 
+          </NavLink>
+          <NavLink to='/cat/mirror' className={({isActive}) => isActive? 'btn btn-success': 
+            'btn btn-outline-success' }> Espejos 
+          </NavLink>
+          <NavLink to='/cat/cushion' className={({isActive}) => isActive? 'btn btn-success': 
+            'btn btn-outline-success' }> Almohadones 
+          </NavLink>
+          <NavLink to='/cat/curtain' className={({isActive}) => isActive? 'btn btn-success': 
+            'btn btn-outline-success' }> Cortinas 
+          </NavLink>
+          <NavLink to='/cat/new' className={({isActive}) => isActive? 'btn btn-success': 
+            'btn btn-outline-success' }> NUEVO! 
+          </NavLink>
         </Nav>
         <Nav> 
-          <Nav.Link eventKey={2} href="#carrito">
+          <Link to='/cart'> 
           <CartWidget/>
-          </Nav.Link>
+          </Link>
+          {/* <Nav.Link eventKey={2} href="#carrito">
+          </Nav.Link> */}
         </Nav>
     </Navbar.Collapse>
     </Navbar>
