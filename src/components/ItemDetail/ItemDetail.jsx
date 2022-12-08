@@ -3,11 +3,9 @@ import React from 'react'
 export const ItemDetail = ({productDetail}) => {
   return (
     <div>
-      <h1>ItemDetail</h1>
-      <h2>Nombre: {productDetail.name}</h2>
-      <h3>Precio: {productDetail.price}</h3>
-      <p>Imagen1: {productDetail.image1}</p>
-      <p>Imagen2: {productDetail.image2}</p>
+      <h1>{productDetail.name}</h1>
+      <h2>{productDetail.price}</h2>
+      <p>Imagen: {productDetail.image}</p>
     </div>
   )
 }

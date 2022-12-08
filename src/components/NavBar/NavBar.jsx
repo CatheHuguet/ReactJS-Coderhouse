@@ -1,6 +1,8 @@
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import CartWidget from '../CartWidget/CartWidget'
 import {Link, NavLink} from 'react-router-dom'
+import categories from '../../assets/database/categories.json'
+
 import decorIcon from '../../assets/decorIcon.png'
 import './NavBar.css'
 
@@ -16,27 +18,13 @@ const NavBar = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-
-          {/* NavLink para las opciones del nav porque quiero ver cuando estan activadas */}     
-          {/* convertir todo esto a un MAP   */}
-          <NavLink to='/cat/furniture' className={({isActive}) => isActive? 'btn btn-success': 
-            'btn btn-outline-success' }> Muebles 
-          </NavLink>
-          <NavLink to='/cat/lamp' className={({isActive}) => isActive? 'btn btn-success': 
-            'btn btn-outline-success' }> Lámparas 
-          </NavLink>
-          <NavLink to='/cat/mirror' className={({isActive}) => isActive? 'btn btn-success': 
-            'btn btn-outline-success' }> Espejos 
-          </NavLink>
-          <NavLink to='/cat/cushion' className={({isActive}) => isActive? 'btn btn-success': 
-            'btn btn-outline-success' }> Almohadones 
-          </NavLink>
-          <NavLink to='/cat/curtain' className={({isActive}) => isActive? 'btn btn-success': 
-            'btn btn-outline-success' }> Cortinas 
-          </NavLink>
-          <NavLink to='/cat/new' className={({isActive}) => isActive? 'btn btn-success': 
-            'btn btn-outline-success' }> NUEVO! 
-          </NavLink>
+        {/* NavLink para las opciones del nav porque quiero ver cuando estan activadas */}    
+          {categories.map( cat => <div key={cat.id}>
+                                    <NavLink to={`/cat/${cat.id}`} className={({isActive}) => isActive? 'btn btn-success': 
+                                      'btn btn-outline-success' }> {cat.name}
+                                    </NavLink>
+                                  </div>  
+          )} 
         </Nav>
         <Nav> 
           <Link to='/cart'> 

@@ -1,9 +1,9 @@
 import products from '../assets/database/products.json'
 
-export const getDetail = ({productId}) => {
+export const getProducts = () => {
   return new Promise ((res, rej) => {
     setTimeout(() => {
-      res(products.find(product => product.id = productId))
+      res(products)
     }, "1000")
   })
 }

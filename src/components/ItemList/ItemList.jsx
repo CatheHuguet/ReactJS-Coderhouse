@@ -11,24 +11,17 @@ export const ItemList = ({products}) => {
                                         <Link to={`/detail/${product.id}`}>
                                             <div className="card w-100 mt-5" >
                                                 <div className="card-header">
-                                                    {`${product.name} - ${product.cat}`}
+                                                    {`${product.name} - ${product.catId}`}
                                                 </div>
                                                 <div className="card-body">
                                                     <img src={product.image} alt='imagennnnn' className='w-50' />
                                                     <br></br>
                                                     <p>{product.price}</p>                                                            
                                                 </div>
-                                        
-                                                {/* <div className="card-footer">                                                        
-                                                    <button className="btn btn-outline-primary btn-block">
-                                                    Ver detalle
-                                                    </button>
-                                                </div> */}
                                             </div>                       
                                         </Link>                                    
                                     </div>  
         )} 
-
     </div>
   )
 } 

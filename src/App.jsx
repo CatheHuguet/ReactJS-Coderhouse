@@ -1,7 +1,7 @@
 //IMPORTACIONES
 //1° librerias de react
 import { useState } from 'react'
-import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 //2° componentes de la app
 import NavBar from './components/NavBar/NavBar'
 import ItemListContainer from './containers/ItemListContainer/ItemListContainer'

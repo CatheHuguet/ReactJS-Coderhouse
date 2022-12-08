@@ -1,33 +1,32 @@
 import { useState,useEffect } from 'react'
-import { getItems } from '../../helpers/getItems'
-import { ItemCount } from '../../components/ItemCount/ItemCount'
+import { getProducts } from '../../helpers/getProducts'
 import { ItemList } from '../../components/ItemList/ItemList'
 import { useParams } from 'react-router-dom'
 import './ItemListContainer.css'
 
 
 const ItemListContainer = ({greeting}) => {
-  const[products, setProducts] = useState([])
+  const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true) 
   const {catId} = useParams()
   
   useEffect(() => {
     if (catId) {
       //simulacion de get para api
-      getItems() 
+      getProducts() 
       //filtro los productos que traigo por categoria SI HAY una seleccionada
-      .then(res => setProducts(res.filter(product => product.cat = catId))) 
+      .then(res => setProducts(res.filter(product => product.catId == catId))) 
       .catch(err => console.log(err))
       .finally(() => setLoading(false))
     } else {
-      getItems()
+      getProducts()
       .then(res => setProducts(res))
       .catch(err => console.log(err))
       .finally(() => setLoading(false))
     }
 
-  }, [catId]) //para que renderice de nuevo lo pongo en el array de dependencia asi lo escucha
-  
+  }, [catId]) //lo pongo en el array de dependencia para que renderice de nuevo cuando cambia
+
   return (
     <>
         <h2>{greeting}</h2>
@@ -37,7 +36,6 @@ const ItemListContainer = ({greeting}) => {
             :
             <ItemList products={products} />
         }
-        <ItemCount/>
     </>
   )
 }

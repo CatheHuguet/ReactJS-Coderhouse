@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react'
 import { getDetail } from '../../helpers/getDetail'
 import { ItemDetail } from '../../components/ItemDetail/ItemDetail'
 import { useParams } from 'react-router-dom'
-
+import { ItemCount } from '../../components/ItemCount/ItemCount'
 
 export const ItemDetailContainer = () => {
   const [productDetail, setProductDetail] = useState([])
@@ -24,7 +24,11 @@ export const ItemDetailContainer = () => {
         { loading ? 
             <div style={{marginLeft:500}} className="spinner-border text-info" role="status"/> 
             :
-            <ItemDetail productDetail={productDetail} />
+            <>
+              <ItemDetail productDetail={productDetail} />
+              <ItemCount/>
+            </>
+
         }
     </>
   )

@@ -1,0 +1,8 @@
+[
+    { "id": "sofa", "name":"sillones", "description": "sillones comfy" }, 
+    { "id": "lamp", "name":"lamparas", "description": "lamparitas" }, 
+    { "id": "mirror", "name":"espejos", "description": "espejito espejito" }, 
+    { "id": "cushion", "name":"almohadones", "description": "almohadones lindos" }, 
+    { "id": "curtain", "name":"cortinas", "description": "oh lala cortinas" }, 
+    { "id": "sale", "name":"ofertas", "description": "dos por uno" }
+]
