@@ -1,11 +1,10 @@
-import React, { useState,useEffect } from 'react'
+import { useState,useEffect } from 'react'
 import { getDetail } from '../../helpers/getDetail'
 import { ItemDetail } from '../../components/ItemDetail/ItemDetail'
 import { useParams } from 'react-router-dom'
-import { ItemCount } from '../../components/ItemCount/ItemCount'
 
 export const ItemDetailContainer = () => {
-  const [productDetail, setProductDetail] = useState([])
+  const [productDetail, setProductDetail] = useState({})
   const [loading, setLoading] = useState(true) 
 
   //hook de reactrouterdom
@@ -18,20 +17,16 @@ export const ItemDetailContainer = () => {
     .finally(() => setLoading(false))
 
   }, [])
-  
+
   return (
     <>
         { loading ? 
             <div style={{marginLeft:500}} className="spinner-border text-info" role="status"/> 
             :
-            <>
-              <ItemDetail productDetail={productDetail} />
-              <ItemCount/>
-            </>
+            <ItemDetail productDetail={productDetail} />
 
         }
     </>
   )
-
 }
 export default ItemDetailContainer

@@ -30,8 +30,6 @@ const NavBar = () => {
           <Link to='/cart'> 
           <CartWidget/>
           </Link>
-          {/* <Nav.Link eventKey={2} href="#carrito">
-          </Nav.Link> */}
         </Nav>
     </Navbar.Collapse>
     </Navbar>
