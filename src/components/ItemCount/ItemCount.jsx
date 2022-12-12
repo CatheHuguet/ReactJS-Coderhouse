@@ -1,6 +1,5 @@
 import { useState } from 'react'
 
-
 export const ItemCount = ({stock = 5, initial, onAdd}) => {
   const [ count, setCount ] = useState(initial) 
 
@@ -38,7 +37,4 @@ export const ItemCount = ({stock = 5, initial, onAdd}) => {
         </button>     
         <br></br>
     </center>
-
-
-  )
-}
+)}

@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import {useState} from 'react';
 import { BsFillCartFill } from "react-icons/bs";
+
 import './CartWidget.css'
 
 const CartWidget = () => {

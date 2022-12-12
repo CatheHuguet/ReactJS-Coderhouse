@@ -1,6 +1,5 @@
 //IMPORTACIONES
 //1° librerias de react
-import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 //2° componentes de la app
 import NavBar from './components/NavBar/NavBar'
@@ -13,7 +12,7 @@ import './App.css'
 
 
 function App() {
-  let greeting = 'greeting prop' //estado del componente, el cambio me re renderiza asi como cambio de prop y eventos
+  let greeting = 'Home' //estado del componente, el cambio me re-renderiza, asi como el cambio de prop y eventos
   
   return (
     <BrowserRouter>
@@ -27,8 +26,7 @@ function App() {
       </Routes>
 
     </BrowserRouter>
-  ) 
-}
+)}
 
 export default App
 

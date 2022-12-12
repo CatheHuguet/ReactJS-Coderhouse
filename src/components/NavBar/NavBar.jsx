@@ -24,7 +24,7 @@ const NavBar = () => {
                                       'btn btn-outline-success' }> {cat.name}
                                     </NavLink>
                                   </div>  
-          )} 
+           )} 
         </Nav>
         <Nav> 
           <Link to='/cart'> 
@@ -33,7 +33,6 @@ const NavBar = () => {
         </Nav>
     </Navbar.Collapse>
     </Navbar>
-  )
-}
+)}
 
 export default NavBar

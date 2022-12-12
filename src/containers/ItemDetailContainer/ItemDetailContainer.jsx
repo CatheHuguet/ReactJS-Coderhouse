@@ -24,7 +24,6 @@ export const ItemDetailContainer = () => {
             <div style={{marginLeft:500}} className="spinner-border text-info" role="status"/> 
             :
             <ItemDetail productDetail={productDetail} />
-
         }
     </>
   )
