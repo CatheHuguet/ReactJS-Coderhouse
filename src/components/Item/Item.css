@@ -1,0 +1,26 @@
+img.card-img {
+    height: 200px;
+}
+
+.a .card {
+    margin-bottom: 10px;
+    color: #212529;
+    text-decoration: none;
+    margin-left: 0px;
+}
+
+.card:hover{
+    color: #7a8a8a;
+}
+
+.a .card-footer{
+    font-size: 22px;
+}
+.a .card-footer .price{
+    font-size: 15px;
+}
+
+.a .card-title{
+    text-transform: uppercase;
+    font-weight: bold;
+}

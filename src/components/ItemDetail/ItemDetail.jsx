@@ -1,9 +1,10 @@
 import { ItemCount } from '../ItemCount/ItemCount'
+import './ItemDetail.css'
 
 export const ItemDetail = ({productDetail}) => {
 
   const onAdd = (count) => alert(`Cantidad agregada al cart: ${count}`)
-
+//agregar dos usestate para comenzar con el item count y despues cambiar a llamar al cart(con dos botones)
   return (
     <div className='row'>
       <div className='col'>

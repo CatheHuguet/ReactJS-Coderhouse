@@ -16,7 +16,7 @@ const ItemListContainer = ({greeting}) => {
       //simulacion de get para api
       getProducts() 
       //filtro los productos que traigo por categoria SI HAY una seleccionada
-      .then(res => setProducts(res.filter(product => product.catId == catId))) 
+      .then(res => setProducts(res.filter(product => product.catId === catId))) 
       .catch(err => console.log(err))
       .finally(() => setLoading(false))
     } else {
