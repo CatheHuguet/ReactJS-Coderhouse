@@ -1,0 +1,15 @@
+.col-sm-8 {
+    background-color: whitesmoke;
+}
+
+.col-sm-4 {
+    background-color: lightgray;
+}
+
+.item-detail{
+    margin: 10px;
+}
+
+.add-to-cart{
+    margin: 10px;
+}
