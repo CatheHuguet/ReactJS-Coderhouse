@@ -1,3 +1,13 @@
-:root {
+
+.body {
   background-color: #7a8a8a;
+}
+
+.a {
+  color: #3A3A3C;
+  text-decoration: none;
+}
+
+.a:hover {
+  color: #7a8a8a;
 }

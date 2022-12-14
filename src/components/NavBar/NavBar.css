@@ -1,8 +1,16 @@
 .NavBar {
-    background-color: white;   
+    background-color: whitesmoke;   
     color: #3A3A3C !important;
 
 }
 .navbar-brand {
     color: #3A3A3C !important;
+}
+
+.a {
+    margin-left: 10px;    
+}
+
+.selected {
+    text-decoration: underline !important;
 }

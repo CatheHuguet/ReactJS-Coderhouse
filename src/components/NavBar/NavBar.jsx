@@ -1,33 +1,39 @@
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { Nav, Navbar } from 'react-bootstrap'
 import CartWidget from '../CartWidget/CartWidget'
+import {Link, NavLink} from 'react-router-dom'
+import categories from '../../assets/database/categories.json'
+
 import decorIcon from '../../assets/decorIcon.png'
 import './NavBar.css'
+
 
 const NavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" className="NavBar d-flex flex-row mb-3">
-      <Navbar.Brand href="#home" className="navbar-brand">
-        <img src={decorIcon} width="30" height="30" className="d-inline-block align-top navv"/>
+      {/* Link para brand y cart porque NO quiero ver cuando estan activados */}
+      <Link to='/' className="navbar-brand"> 
+        <img src={decorIcon} width="30" height="30" className="d-inline-block align-top nav"/>
         DECO.ration
-      </Navbar.Brand>
+      </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-          <Nav.Link href="#muebles">Muebles</Nav.Link>
-          <Nav.Link href="#lamparas">Lámparas</Nav.Link>
-          <Nav.Link href="#espejos">Espejos</Nav.Link>
-          <Nav.Link href="#almohadones">Almohadones</Nav.Link>
-          <Nav.Link href="#cortinas">Cortinas</Nav.Link>
-          <Nav.Link href="#nuevo">NUEVO!</Nav.Link>
+        {/* NavLink para las opciones del nav porque SI quiero ver cuando estan activadas (clickeadas)*/}    
+        {/* Categories a modularizar en el futuro */}
+          { categories.map( cat => <div key={cat.id}>
+                                    <NavLink to={`/cat/${cat.id}`} className={({isActive}) => isActive? 'a selected': 
+                                      'a' }> {cat.name}
+                                    </NavLink>
+                                  </div>  
+           )} 
         </Nav>
         <Nav> 
-          <Nav.Link eventKey={2} href="#carrito">
+          <Link to='/cart'> 
           <CartWidget/>
-          </Nav.Link>
+          </Link>
         </Nav>
     </Navbar.Collapse>
     </Navbar>
-  )
-}
+)}
 
 export default NavBar
