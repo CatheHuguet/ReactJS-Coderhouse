@@ -1,14 +1,20 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-
+import { useCartContext } from '../../context/CartContext';
 import { ItemCount } from '../ItemCount/ItemCount'
 import './ItemDetail.css'
 
 export const ItemDetail = ({productDetail}) => {
+  const [ isCount, setIsCount ] = useState(true)
+  const { addToCart } = useCartContext()
+  const onAdd = (count) => {
+    addToCart({ ...productDetail, count })
+    setIsCount(false)
+  }
 
-  const onAdd = (count) => alert(`Cantidad agregada al cart: ${count}`)
-//agregar dos usestate para comenzar con el item count y despues cambiar a llamar al cart(con dos botones)
   return (
     <Container fluid>
       <Row>
@@ -21,9 +27,20 @@ export const ItemDetail = ({productDetail}) => {
             </div>
           </Col>
           <Col sm={4} className='rounded border d-flex justify-content-center'>
-            <div className='add-to-cart'>
-              <ItemCount stock={10} initial={1} onAdd={onAdd}/>
-            </div>
+            { isCount ? 
+              <div className='add-to-cart'>
+                <ItemCount stock={productDetail.stock} initial={1} onAdd={onAdd}/>
+              </div>
+            :
+              <div>
+                <Link to='/cart'>
+                  <button> Ir al carrito </button>
+                </Link>
+                <Link to='/'>
+                  <button> Seguir comprando </button>
+                </Link>
+              </div>
+            }
           </Col>
       </Row>
     </Container>

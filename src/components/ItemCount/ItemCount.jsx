@@ -4,14 +4,18 @@ import Modal from 'react-bootstrap/Modal';
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import './ItemCount.css'
 
-export const ItemCount = ({stock = 5, initial, onAdd}) => {
-  const [ count, setCount ] = useState(initial) 
+export const ItemCount = ({stock, initial, onAdd}) => {
+  const [ count, setCount ] = useState(initial)
 
-  const increase = () => {if (count < stock)setCount(count + 1)}
+  const increase = () => {
+    if (count < stock) {
+      setCount(count + 1)
+    }
+  }
   const decrease = () => {if (count > 1) setCount(count - 1)}
-
+  
   const handleOnAdd = () => {
-    onAdd(count)
+    onAdd(count) 
     handleShow()
 }
   const [show, setShow] = useState(false);
@@ -27,7 +31,7 @@ export const ItemCount = ({stock = 5, initial, onAdd}) => {
             <AiFillMinusCircle className='icons' onClick={decrease} size={40}/>
         </div>
         <div>
-            <Button onClick={handleShow} className="mb-2 add-button" variant="secondary">
+            <Button onClick={handleOnAdd} className="mb-2 add-button" variant="secondary">
             Agregar al carrito
             </Button>
         </div>

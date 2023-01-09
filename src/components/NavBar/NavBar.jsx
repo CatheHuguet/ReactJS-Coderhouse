@@ -1,8 +1,7 @@
 import { Nav, Navbar } from 'react-bootstrap'
-import CartWidget from '../CartWidget/CartWidget'
 import {Link, NavLink} from 'react-router-dom'
 import categories from '../../assets/database/categories.json'
-
+import CartWidget from '../CartWidget/CartWidget'
 import decorIcon from '../../assets/decorIcon.png'
 import './NavBar.css'
 

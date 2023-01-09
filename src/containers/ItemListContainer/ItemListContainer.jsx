@@ -1,10 +1,9 @@
 import { useState,useEffect } from 'react'
-import Spinner from 'react-bootstrap/Spinner';
-import { getProducts } from '../../helpers/getProducts'
 import { ItemList } from '../../components/ItemList/ItemList'
 import { useParams } from 'react-router-dom'
+import { collection, getDocs, getFirestore, limit, orderBy, query, where } from 'firebase/firestore'
 
-
+import Loader from '../../components/LoaderComponent/Loader';
 import './ItemListContainer.css'
 
 
@@ -12,30 +11,37 @@ const ItemListContainer = ({greeting}) => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true) 
   const {catId} = useParams()
-  const spinnerStyle = { position: "fixed", top: "50%", left: "50%" }
-  
-  useEffect(() => {
-    if (catId) {
-      setLoading(true) //lo seteo en true de nuevo para cuando solo cambia el cat id, sino queda en false y no muestra el spinner
-      getProducts() 
-      //filtro los productos que traigo por categoria SI HAY una seleccionada
-      .then(res => setProducts(res.filter(product => product.catId === catId))) 
-      .catch(err => console.log(err))
-      .finally(() => setLoading(false))
-    } else {
-      getProducts()
-      .then(res => setProducts(res))
-      .catch(err => console.log(err))
-      .finally(() => setLoading(false))
-    }
 
-  }, [catId]) //lo pongo en el array de dependencia para que renderice de nuevo cuando cambia
+  //if there's a category selected it brings the products filtered, if not, brings all the products.
+  useEffect(()=>{
+    const db = getFirestore()
+    const queryCollection = collection(db, 'products')
+
+    if (catId) {
+    const queryFilter = query(
+      queryCollection, 
+      where('catId', '==', catId),
+      orderBy('price', 'asc')
+      )
+      
+      getDocs(queryFilter)
+      .then(res => setProducts(res.docs.map(product => ({ id: product.id, ...product.data() }) )) )
+      .catch(err => console.log(err))
+      .finally(()=> setLoading(false))
+    }
+    else {
+      getDocs(queryCollection)
+      .then(res => setProducts(res.docs.map(product => ({ id: product.id, ...product.data() }) )) )
+      .catch(err => console.log(err))
+      .finally(()=> setLoading(false))
+    }
+  },[catId])
 
   return (
     <>
         <h2>{greeting}</h2>
         { loading ? 
-            <Spinner style={spinnerStyle} animation="border" role="status"/> 
+            <Loader/>
             :
             <ItemList products={products} />
         }
