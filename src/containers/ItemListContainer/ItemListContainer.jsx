@@ -18,8 +18,7 @@ const ItemListContainer = ({greeting}) => {
     const queryCollection = collection(db, 'products')
 
     if (catId) {
-      console.log(catId)
-    const queryFilter = query(
+      const queryFilter = query(
       queryCollection, 
       where('catId', '==', catId),
       orderBy('price', 'asc')

@@ -1,8 +1,12 @@
-import { useState } from "react";
-import { addDoc, collection, getFirestore } from "firebase/firestore"
+import { useState } from "react"
 import { useCartContext } from "../../context/CartContext"
-import Button from 'react-bootstrap/Button';
-import OrderForm from "../../components/OrderForm/OrderForm";
+import Button from 'react-bootstrap/Button'
+import OrderForm from "../../components/OrderForm/OrderForm"
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import { AiFillDelete } from "react-icons/ai"
+import { Card } from "react-bootstrap"
 
 const CartContainer = () => {
 
@@ -17,33 +21,44 @@ const CartContainer = () => {
   return (
     <>
     {totalCount() ? 
-    <>
-      <div>
+    <Container fluid>
+      <h3> Carrito </h3>
+      <Row>
+      <Col sm={8}>
         {cartList.map (product => 
-            <li key={product.id}>
-              <img src={product.image} className='w25' alt="" />
-              <Button className="btn" onClick={()=>deleteItem(product.id)}> X </Button>
-              <p>{product.name}</p>
-              <p>Cantidad: {product.count} <br/> 
-              Precio único: ${product.price}</p>
-            </li>)}
-            <p>
-              {totalPrice() > 0 && <label> Precio total: {totalPrice()}</label>}
-            </p>
-      </div>
-      <div>
-        <p>
-          Cantidad de items en el carrito: {totalCount()}
-        </p>
-          <Button onClick={emptyCart}>Vaciar carrito</Button>
-          <Button onClick={handleFormShow}>Comprar carrito</Button>
+            <Row key={product.id}>
+              <Col>
+                <img src={product.image} className="rounded w-25"/>
+                 <h5 className="">{product.name}</h5>
+              </Col>
+              <Col>
+                  <p>Cantidad: {product.count}</p>
+                  <span className='price'>$ </span>
+                  {product.price}
+              </Col>
+              <Col>
+              <AiFillDelete onClick={()=>deleteItem(product.id)} size={25}/>
+              </Col>
+            </Row>
+        )}
+        <h5> Cantidad de items en el carrito: {totalCount()} </h5>
+      </Col>
+      <Col sm={4}>
+              {totalPrice() > 0 && <h5> Precio total: ${totalPrice()}</h5>}
+
+          <Button variant="dark" onClick={emptyCart}>Vaciar carrito</Button>
+          <Button variant="dark" className='mx-2' onClick={handleFormShow}>Comprar carrito</Button>
           {showForm && <OrderForm setIdGeneratedOrder={setIdGeneratedOrder}/>}
-      </div>
-    </>
+      </Col>
+              </Row>
+      </Container>
       :
       <>
         {idGeneratedOrder ? 
-        <label> Número de orden de compra: {idGeneratedOrder}</label>
+        <div>
+          <h2> Compra realizada con éxito! </h2>
+          <h4> Código de orden de compra: {idGeneratedOrder}</h4>
+        </div>
         :
         <p>Carrito vacío</p>
         }

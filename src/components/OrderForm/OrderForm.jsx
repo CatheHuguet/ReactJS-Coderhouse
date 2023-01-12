@@ -11,7 +11,7 @@ const OrderForm = ({setIdGeneratedOrder}) => {
   const [dataForm, setDataForm] = useState({
     name: "",
     email: "",
-    email2: "",
+    emailRepeated: "",
     phone: ""
   })
   
@@ -42,14 +42,14 @@ const OrderForm = ({setIdGeneratedOrder}) => {
     }
 
     const validateForm = () => {
-      const{name, email,email2, phone} = dataForm
+      const{name, email,emailRepeated, phone} = dataForm
       const newErrors = {}
       if(!name) newErrors.name = "El nombre no puede quedar vacío"
       if (!email) newErrors.email = "El email no puede quedar vacío"
-      if (!email2) newErrors.email2 = "El email no puede quedar vacío"
+      if (!emailRepeated) newErrors.emailRepeated = "El email no puede quedar vacío"
 
-      if (email !== email2) {
-        newErrors.email2 = "El email debe ser el mismo"
+      if (email !== emailRepeated) {
+        newErrors.emailRepeated = "El email debe ser el mismo"
       }
       if (!phone) newErrors.phone = "El teléfono no puede quedar vacío"
 
@@ -77,7 +77,7 @@ const OrderForm = ({setIdGeneratedOrder}) => {
       setDataForm({
         name: "",
         email: "",
-        email2: "",
+        emailRepeated: "",
         phone: ""
       })
     })
@@ -90,12 +90,13 @@ const OrderForm = ({setIdGeneratedOrder}) => {
   return (
     <div>
         <Form onSubmit={generateOrder}>
-          <Form.Group className="w-50">
+          <Form.Group className="mb-2 mt-2">
             <Form.Label>Nombre completo</Form.Label>
             <Form.Control 
               type="text" 
               name="name" 
               placeholder="Ingrese el nombre" 
+              maxLength="30"
               value={dataForm.name} 
               onChange={handleOnChange} 
               isInvalid={!!errors.name}>
@@ -108,6 +109,7 @@ const OrderForm = ({setIdGeneratedOrder}) => {
               type="email" 
               name="email" 
               placeholder="Ingrese el email" 
+              maxLength="30"
               value={dataForm.email} 
               onChange={handleOnChange} 
               isInvalid={!!errors.email}>
@@ -118,20 +120,21 @@ const OrderForm = ({setIdGeneratedOrder}) => {
             <Form.Label>Repetir email</Form.Label>
             <Form.Control 
               type="email" 
-              name="email2" 
+              name="emailRepeated" 
+              maxLength="30"
               placeholder="Ingrese el email nuevamente" 
-              value={dataForm.email2} 
+              value={dataForm.emailRepeated} 
               onChange={handleOnChange} 
-              isInvalid={!!errors.email2}>
+              isInvalid={!!errors.emailRepeated}>
             </Form.Control>
             <Form.Control.Feedback type="invalid">
-              {errors.email2}
+              {errors.emailRepeated}
             </Form.Control.Feedback>
-            
             <Form.Label>Teléfono</Form.Label>
             <Form.Control 
-              type="text" 
+              type="number" 
               name="phone" 
+              maxLength="10"
               placeholder="Ingrese el teléfono" 
               value={dataForm.phone} 
               onChange={handleOnChange} 
@@ -141,7 +144,7 @@ const OrderForm = ({setIdGeneratedOrder}) => {
               {errors.phone}
             </Form.Control.Feedback>
           </Form.Group>
-          <Button variant="primary" type="submit">Generar orden</Button>
+          <Button variant="secondary" type="submit">Generar orden</Button>
         </Form>
     </div>
   )}

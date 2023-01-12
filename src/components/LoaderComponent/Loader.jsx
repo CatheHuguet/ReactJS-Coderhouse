@@ -3,9 +3,6 @@ import Spinner from 'react-bootstrap/Spinner';
 
 const Loader = () => {
     const spinnerStyle = { position: "fixed", top: "50%", left: "50%" }
-    useEffect(()=> {
-        return () => console.log('dismounting...')
-    })
 
   return (
     <> 

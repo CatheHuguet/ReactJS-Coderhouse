@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import Button from 'react-bootstrap/Button';
-import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
+import Button from 'react-bootstrap/Button'
+import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai"
 import './ItemCount.css'
 
 export const ItemCount = ({stock, initial, onAdd}) => {
@@ -20,12 +20,12 @@ export const ItemCount = ({stock, initial, onAdd}) => {
   return (
     <>
         <div className='d-flex justify-content-center align-items-center'>
-            <AiFillPlusCircle className='icons' onClick={increase} size={41}/>
-            <h4 htmlFor="" className='count'>{count}</h4>
-            <AiFillMinusCircle className='icons' onClick={decrease} size={40}/>
+            <AiFillPlusCircle className='icons' onClick={increase} size={30}/>
+            <h4 className='count'> {count} </h4>
+            <AiFillMinusCircle className='icons' onClick={decrease} size={30}/>
         </div>
         <div>
-            <Button onClick={handleOnAdd} className="mb-2 add-button" variant="secondary">
+            <Button onClick={handleOnAdd} className="mb-2" variant="dark">
             Agregar al carrito
             </Button>
         </div>
