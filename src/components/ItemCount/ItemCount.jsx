@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import './ItemCount.css'
 
@@ -16,12 +15,7 @@ export const ItemCount = ({stock, initial, onAdd}) => {
   
   const handleOnAdd = () => {
     onAdd(count) 
-    handleShow()
 }
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   return (
     <>
@@ -35,16 +29,5 @@ export const ItemCount = ({stock, initial, onAdd}) => {
             Agregar al carrito
             </Button>
         </div>
-        <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Notificación</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Cantidad agregada al carrito: {count}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </>
 )}

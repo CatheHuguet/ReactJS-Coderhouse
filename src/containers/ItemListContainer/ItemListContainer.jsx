@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react'
 import { ItemList } from '../../components/ItemList/ItemList'
 import { useParams } from 'react-router-dom'
-import { collection, getDocs, getFirestore, limit, orderBy, query, where } from 'firebase/firestore'
+import { collection, getDocs, getFirestore, orderBy, query, where } from 'firebase/firestore'
 
 import Loader from '../../components/LoaderComponent/Loader';
 import './ItemListContainer.css'
@@ -18,6 +18,7 @@ const ItemListContainer = ({greeting}) => {
     const queryCollection = collection(db, 'products')
 
     if (catId) {
+      console.log(catId)
     const queryFilter = query(
       queryCollection, 
       where('catId', '==', catId),
