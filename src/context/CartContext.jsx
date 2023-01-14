@@ -2,6 +2,9 @@ import { useContext, useState, createContext } from "react"
 
 const CartContext =  createContext([]) 
 
+/**
+ * It returns the CartContext object with all the functions to handle the cart
+ */
 export const useCartContext = () => useContext(CartContext)
 
 const CartContextProvider = ({ children }) => {

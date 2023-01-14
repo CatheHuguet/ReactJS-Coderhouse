@@ -2,8 +2,6 @@ import { Item } from "../Item/Item"
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 
-import './ItemList.css'
-
 export const ItemList = ({products}) => {
   const colPerRow = 4
 

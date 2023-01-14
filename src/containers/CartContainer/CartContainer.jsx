@@ -29,24 +29,23 @@ const CartContainer = () => {
       <Container fluid>
         <h3> Carrito </h3>
         <Row>
-          <Col sm={8}>
+          <Col sm={8} className="justify-content-center">
             {cartList.map (product => 
-                <Row key={product.id}>
+                <Row key={product.id} className="mt-2" >
                   <Col>
                     <img src={product.image} className="rounded w-25"/>
-                    <h5 className="">{product.name}</h5>
+                    <h6 className="text-uppercase">{product.name}</h6>
                   </Col>
                   <Col>
                       <p>Cantidad: {product.count}</p>
-                      <span className='price'>$ </span>
-                      {product.price}
+                      <p className='price'>${product.price}</p>
                   </Col>
                   <Col>
                   <AiFillDelete onClick={()=>deleteItem(product.id)} size={25}/>
                   </Col>
                 </Row>
             )}
-            <h5> Cantidad de items en el carrito: {totalCount()} </h5>
+            <h6> Cantidad de items en el carrito: {totalCount()} </h6>
             </Col>
             <Col sm={4}>
                     {totalPrice() > 0 && <h5> Precio total: ${totalPrice()}</h5>}
