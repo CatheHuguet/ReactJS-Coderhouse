@@ -8,9 +8,10 @@ E-commerce for a decoration site, with React JS, Bootstrap and Firebase.
 ## Features
 
 - NavBar with navigable categories
-- Grid with products
+- Grid with product list
 - Shopping cart
 - Order management
+- Update product stock in the DB after the order is made
 
 ## Tech
 
