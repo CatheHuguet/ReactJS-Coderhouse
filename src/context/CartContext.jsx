@@ -6,7 +6,12 @@ export const useCartContext = () => useContext(CartContext)
 
 const CartContextProvider = ({ children }) => {
     const [cartList, setCartList] = useState([])
+    const [idGeneratedOrder, setIdGeneratedOrder] = useState()
 
+/**
+ * If the product is not in the cart, add it to the cart. If it is in the cart, increase the count of
+ * the product in the cart.
+ */
     const addToCart = (product) => { 
         const productIdx = cartList.findIndex(prod => product.id === prod.id)
 
@@ -36,6 +41,8 @@ const CartContextProvider = ({ children }) => {
             totalCount,
             totalPrice,
             deleteItem,
+            setIdGeneratedOrder,
+            idGeneratedOrder
          }}>
             { children }
         </CartContext.Provider>

@@ -12,29 +12,18 @@ const ItemListContainer = ({greeting}) => {
   const [loading, setLoading] = useState(true) 
   const {catId} = useParams()
 
-  //if there's a category selected it brings the products filtered, if not, brings all the products.
+  /* Getting the products from the firestore database. If catId is true, then it will bring products filtered by the selected category.
+  If catId is false, then it will just bring al the products. */
   useEffect(()=>{
     const db = getFirestore()
     const queryCollection = collection(db, 'products')
+    const queryFilter = catId ? query( queryCollection, where('catId', '==', catId)) : queryCollection
 
-    if (catId) {
-      const queryFilter = query(
-      queryCollection, 
-      where('catId', '==', catId),
-      orderBy('price', 'asc')
-      )
-      
-      getDocs(queryFilter)
-      .then(res => setProducts(res.docs.map(product => ({ id: product.id, ...product.data() }) )) )
-      .catch(err => console.log(err))
-      .finally(()=> setLoading(false))
-    }
-    else {
-      getDocs(queryCollection)
-      .then(res => setProducts(res.docs.map(product => ({ id: product.id, ...product.data() }) )) )
-      .catch(err => console.log(err))
-      .finally(()=> setLoading(false))
-    }
+    getDocs(queryFilter)
+    .then(res => setProducts(res.docs.map(product => ({ id: product.id, ...product.data() }) )) )
+    .catch(err => console.log(err))
+    .finally(()=> setLoading(false))
+    
   },[catId])
 
   return (

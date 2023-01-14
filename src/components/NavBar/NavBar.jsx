@@ -10,14 +10,15 @@ import './NavBar.css'
 const NavBar = () => {
   const [categories, setCategories] = useState([])
 
-    useEffect(()=>{
-        const db = getFirestore()
-        const queryCollection = collection(db, 'categories')
-    
-        getDocs(queryCollection)
-        .then(res => setCategories(res.docs.map(category => ({ id: category.id, ...category.data() }) )) )
-        .catch(err => console.log(err))
-      },[])
+/* A hook that is used to fetch the categories from firebase. */
+  useEffect(()=>{
+      const db = getFirestore()
+      const queryCollection = collection(db, 'categories')
+  
+      getDocs(queryCollection)
+      .then(res => setCategories(res.docs.map(category => ({ id: category.id, ...category.data() }) )) )
+      .catch(err => console.log(err))
+    },[])
 
   return (
     <Navbar collapseOnSelect expand="lg" className="NavBar d-flex flex-row mb-3">

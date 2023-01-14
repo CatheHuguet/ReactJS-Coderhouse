@@ -6,6 +6,7 @@ import './ItemList.css'
 
 export const ItemList = ({products}) => {
   const colPerRow = 4
+
   return (
     <Container>
           <Row md={colPerRow}>

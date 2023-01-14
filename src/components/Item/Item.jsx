@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import './Item.css'
 
 export const Item = ({product}) => {
+   /* Returning the view of a product */
     return (
         <Col>
           <Link className='a' to={`/detail/${product.id}`}>

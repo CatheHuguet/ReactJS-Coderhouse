@@ -5,12 +5,15 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { useCartContext } from '../../context/CartContext';
 import { ItemCount } from '../ItemCount/ItemCount'
-import './ItemDetail.css'
 import { Button } from 'react-bootstrap';
+import './ItemDetail.css'
 
 export const ItemDetail = ({productDetail}) => {
   const [ isCount, setIsCount ] = useState(true)
   const { addToCart } = useCartContext()
+/**
+ * When the user clicks the add to cart button, add the product to the cart and set the count to false.
+ */
   const onAdd = (count) => {
     addToCart({ ...productDetail, count })
     setIsCount(false)

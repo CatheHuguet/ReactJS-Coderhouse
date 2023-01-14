@@ -10,6 +10,7 @@ export const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true) 
   const {productId} = useParams()
 
+  /* Getting the product detail from firestore. */
   useEffect(()=>{
     const db = getFirestore()
     const queryDoc = doc(db, 'products', productId)
@@ -18,7 +19,6 @@ export const ItemDetailContainer = () => {
     .then(productDetail => setProductDetail({ id: productDetail.id, ...productDetail.data() } ))
     .catch(err => console.log(err))
     .finally(() => setLoading(false))
-
   }, [])
 
   return (
