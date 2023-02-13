@@ -3,7 +3,7 @@
 # DECO.ration
 ## Demo: https://silver-biscochitos-5b6911.netlify.app/
 
-E-commerce for a decoration site, with React JS, Bootstrap and Firebase.
+E-commerce for a decoration site, with React JS, Bootstrap and Firebase. Work in progress.
 
 ## Features
 
